@@ -533,9 +533,8 @@ def _handle_join_table(message):
         return
 
     # Already in queue → silent ignore
-    if any(q.get("user_id") == user_id for q in queue):
-    return
-
+   # duplicate join allow
+     pass
     # Find oldest entry from a different player
     eligible = [q for q in queue if q.get("user_id") != user_id]
     if not eligible:
