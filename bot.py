@@ -624,6 +624,6 @@ def _handle_queue(message, amount: float, mode: str):
             save_data(data)
             bot.reply_to(message, "\n".join(errors) + "\nTable cancelled.")
             return
-            if __name__ == "__main__":
-                bot.infinity_polling()
-               
+            
+if __name__ == "__main__":
+    bot.infinity_polling()
