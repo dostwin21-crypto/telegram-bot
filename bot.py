@@ -58,9 +58,7 @@ def get_player_name(user) -> str:
 
 def is_admin(message) -> bool:
     try:
-        if message.chat.type == "private":
-            return True
-        member = bot.get_chat_member(message.chat.id, message.from_user.id)
+         member = bot.get_chat_member(message.chat.id, message.from_user.id)
         return member.status in ("administrator", "creator")
     except Exception:
         return False
