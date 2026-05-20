@@ -541,9 +541,9 @@ def _handle_join_table(message):
     amount = entry["amount"]
 
     # Balance check for joiner
-    if players.get(player, 0) < amount:
-        send_payment_info(message)
-        return
+    # if players.get(player, 0) < amount:
+#     send_payment_info(message)
+#     return
 
     queue.remove(entry)
 
