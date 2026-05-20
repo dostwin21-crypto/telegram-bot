@@ -54,16 +54,15 @@ def get_player_name(user) -> str:
     if user.username:
         return normalize(user.username)
     return normalize(user.first_name or str(user.id))
-
-
 def is_admin(message) -> bool:
     try:
-         member = bot.get_chat_member(message.chat.id, message.from_user.id)
+        member = bot.get_chat_member(
+            message.chat.id,
+            message.from_user.id
+        )
         return member.status in ("administrator", "creator")
     except Exception:
         return False
-
-
 def require_admin(message) -> bool:
     if not is_admin(message):
         bot.reply_to(message, "❌ Only admins can use this command.")
