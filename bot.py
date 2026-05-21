@@ -559,6 +559,7 @@ bot.reply_to(
     message,
     f"✅ Table open: {fmt(amount)}{mode}"
 )
+return
 entry = eligible[0]
 amount = entry["amount"]
 
