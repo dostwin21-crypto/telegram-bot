@@ -487,9 +487,19 @@ def handle_text(message):
 
     # ── "100f" / "100 f" / "100t" / "100 t" ─────────────────
     m = TABLE_PATTERN.match(text)
-    if m:
-        _handle_queue(message, float(m.group(1)), m.group(2).lower())
-        return
+
+if m:
+    mode = (m.group(2) or "f").lower()
+
+    if mode == "full":
+        mode = "f"
+
+    _handle_queue(
+        message,
+        float(m.group(1)),
+        mode
+    )
+    return
 
 
 def _handle_win(message):
