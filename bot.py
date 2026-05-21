@@ -533,6 +533,22 @@ def _handle_join_table(message):
         return
 
     # Already in queue → silent ignore
+    if any(q.get("user_id") == user_id for q in queue):
+    return
+
+  queue.append({
+    "user_id": user_id,
+    "player": player,
+    "amount": amount,
+    "mode": mode
+})
+
+save_data(data)
+
+bot.reply_to(
+    message,
+    f"✅ Table open: {fmt(amount)}{mode}"
+)
 
     # Find oldest entry from a different player
     eligible = [q for q in queue if q.get("user_id") != user_id]
