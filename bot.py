@@ -544,7 +544,7 @@ def _handle_join_table(message):
 
     # Already in queue → silent ignore
     if any(q.get("user_id") == user_id for q in queue):
-    return
+        return
 
   queue.append({
     "user_id": user_id,
