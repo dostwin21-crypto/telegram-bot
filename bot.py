@@ -23,7 +23,10 @@ EMPTY_DATA = {
 }
 
 PAYMENT_KEYWORDS = {"pay", "qr", "payment", "paying", "paid"}
-TABLE_PATTERN = re.compile(r"^(\d+(?:\.\d+)?)\s*([ft])$", re.IGNORECASE)
+TABLE_PATTERN = re.compile(
+    r"^(\d+(?:\.\d+)?)\s*(f|t|full)?$",
+    re.IGNORECASE
+)
 DONE_PATTERN = re.compile(r"^done\s+(\d+(?:\.\d+)?)\s*$", re.IGNORECASE)
 
 
