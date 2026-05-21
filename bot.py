@@ -486,22 +486,21 @@ def handle_text(message):
         return
 
     # ── "100f" / "100 f" / "100t" / "100 t" ─────────────────
-    m = TABLE_PATTERN.match(text)
+ m = TABLE_PATTERN.match(text)
 
-if m:
-    mode = (m.group(2) or "f").lower()
+    if m:
+        mode = (m.group(2) or "f").lower()
 
-    if mode == "full":
-        mode = "f"
+        if mode == "full":
+            mode = "f"
 
-    _handle_queue(
-        message,
-        float(m.group(1)),
-        mode
-    )
-    return
-
-
+        _handle_queue(
+            message,
+            float(m.group(1)),
+            mode
+        )
+        return
+    
 def _handle_win(message):
     player = get_player_name(message.from_user)
     data = load_data()
