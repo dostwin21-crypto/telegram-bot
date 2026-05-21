@@ -560,7 +560,7 @@ bot.reply_to(
     f"✅ Table open: {fmt(amount)}{mode}"
 )
 save_data(data)
-return
+
     # Find oldest entry from a different player
     eligible = [q for q in queue if q.get("user_id") != user_id]
     if not eligible:
@@ -569,12 +569,7 @@ return
 
     entry = eligible[0]
     amount = entry["amount"]
-
-    # Balance check for joiner
-    # if players.get(player, 0) < amount:
-#     send_payment_info(message)
-#     return
-
+ 
     queue.remove(entry)
 
     p1 = entry["player"]
