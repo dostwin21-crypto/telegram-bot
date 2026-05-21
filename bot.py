@@ -559,31 +559,23 @@ bot.reply_to(
     message,
     f"✅ Table open: {fmt(amount)}{mode}"
 )
-save_data(data)
+entry = eligible[0]
+amount = entry["amount"]
 
-    # Find oldest entry from a different player
-    eligible = [q for q in queue if q.get("user_id") != user_id]
-    if not eligible:
-        bot.reply_to(message, "⏳ No open tables right now. Send '100f' or '100t' to create one.")
-        return
+queue.remove(entry)
 
-    entry = eligible[0]
-    amount = entry["amount"]
- 
-    queue.remove(entry)
+p1 = entry["player"]
+p2 = player
+mode1 = entry["mode"]
+mode2 = "t" if mode1 == "f" else "f"
 
-    p1 = entry["player"]
-    p2 = player
-    mode1 = entry["mode"]
-    mode2 = "t" if mode1 == "f" else "f"
-    mode_label1 = "Fast" if mode1 == "f" else "Toss"
-    mode_label2 = "Fast" if mode2 == "f" else "Toss"
+mode_label1 = "Fast" if mode1 == "f" else "Toss"
+mode_label2 = "Fast" if mode2 == "f" else "Toss"
 
-    players[p1] = round(players.get(p1, 0) - amount, 2)
-    players[p2] = round(players.get(p2, 0) - amount, 2)
-
-    table_id = data["next_table_id"]
-    data["active_tables"].append({
+players[p1] = round(players.get(p1, 0) - amount, 2)
+players[p2] = round(players.get(p2, 0) - amount, 2)
+table_id = data["next_table_id"]
+data["active_tables"].append({
         "id": table_id,
         "player1": p1,
         "player2": p2,
