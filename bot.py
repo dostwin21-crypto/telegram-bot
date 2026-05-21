@@ -546,13 +546,12 @@ def _handle_join_table(message):
     if any(q.get("user_id") == user_id for q in queue):
         return
 
-  queue.append({
-    "user_id": user_id,
-    "player": player,
-    "amount": amount,
-    "mode": mode
-})
-
+queue.append({
+        "user_id": user_id,
+        "player": player,
+        "amount": amount,
+        "mode": mode
+    })
 save_data(data)
 
 bot.reply_to(
